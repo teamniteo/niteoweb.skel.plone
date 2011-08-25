@@ -1,0 +1,217 @@
+"""
+This is your mindset: **deployment is boring**. You make it boring by making it
+easily repeatable and taking out the human part. You never want to connect to
+the server to do maintenance. You want to have a script that does the tedious
+work for for you.
+
+This is where Fabric comes in. Fabric command file (``fabfile.py``) contains
+several scripts for tasks you need to frequently do on your server. From
+installing base libraries, to running buildout to downloading production data
+to your local machine.
+
+Most commands (but not all!) are ordered in an hierarchy of top-level
+meta-commands to low-level, specific tasks. Here is a tree-view of how commands
+relate to each other. If something goes awry when running a top-level command,
+it's best to resume deployment with a low-level sub-command.
+
+You can get a list of all available commands by running ``bin/fab --list``.
+
+::
+
+    deploy
+    |-- configure_nginx
+    |-- download_code
+    |-- prepare_buildout
+    |-- run_buildout
+    |-- upload_data
+    `-- start_supervisor
+
+Deploy
+------
+
+.. sourcecode:: bash
+
+    $ python2.6 bootstrap.py -c development.cfg
+    $ bin/buildout
+    $ bin/fab deploy
+
+Available Fabric commands
+-------------------------
+"""
+
+from fabric.api import cd
+from fabric.api import env
+from fabric.api import get
+from fabric.api import local
+from fabric.api import sudo
+from fabric.api import settings
+from fabric.contrib.console import confirm
+from fabric.contrib.files import exists
+from fabric.contrib.files import upload_template
+from fabric.contrib.project import rsync_project
+
+import os
+
+env.path = os.getcwd()
+env.hosts = ['${ips:server}']
+env.prod_user = '${config:shortname}'  # production user for this project
+env.server = '${ips:server}'
+env.hq = '${ips:hq}'
+env.shortname = '${config:shortname}'
+
+
+def deploy():
+    """A high-level meta-command for deploying this project to Omega
+    server."""
+
+    configure_nginx()
+    download_code()
+    prepare_buildout()
+    run_buildout()
+    upload_data()
+    start_supervisord()
+
+
+def configure_nginx():
+    """Upload nginx configuration for this site to /etc/nginx/sites/ so
+    it gets included in the main nginx.conf."""
+    # disable replus site config if it's already enabled
+    if exists('/etc/nginx/sites-enabled/%(shortname)s.conf' % env):
+        sudo('rm -rf /etc/nginx/sites-enabled/%(shortname)s.conf' % env)
+
+    upload_template('%(path)s/etc/nginx.conf' % env, '/etc/nginx/sites-available/%(shortname)s.conf' % env, use_sudo=True)
+    sudo('ln -s /etc/nginx/sites-available/%(shortname)s.conf /etc/nginx/sites-enabled/%(shortname)s.conf' % env)
+    sudo('service nginx reload')
+
+
+def download_code():
+    """Pull project code from repository to /tmp and upload it to
+    the server."""
+
+    with cd('/home/%(prod_user)s' % env):
+        sudo('svn export --force --no-auth-cache https://niteoweb.repositoryhosting.com/svn/niteoweb_%(shortname)s/niteoweb.%(shortname)s/trunk ./' % env, user=env.prod_user)
+
+
+def prepare_buildout():
+    """Prepare zc.buildout environment so we can use
+    ``bin/buildout -c production.cfg`` to build a production environment
+    for Plone. """
+
+    with cd('/home/%(prod_user)s' % env):
+
+        sudo('virtualenv -p python2.6 --no-site-packages ./', user=env.prod_user)
+        sudo('bin/python bootstrap.py -c production.cfg', user=env.prod_user)
+
+
+def run_buildout():
+    """Run ``bin/buildout -c production.cfg`` on server."""
+
+    with cd('/home/%(prod_user)s' % env):
+        sudo('bin/buildout -c production.cfg', user=env.prod_user)
+
+    # allow everyone in group `projects` to use what you put in egg-cache
+    sudo('chown -R root:projects /etc/buildout/{eggs,downloads,extends}')
+    sudo('chmod -R 775 /etc/buildout/{eggs,downloads,extends}')
+
+
+def upload_data():
+    """Upload Zope's data to the server."""
+
+    confirm("This will destroy all current Zope data on the server. " \
+    "Are you sure you want to continue?")
+
+    with cd('/home/%(prod_user)s/var' % env):
+
+        ### Upload Data.fs ###
+        # upload Data.fs to server and move it to it's place
+        upload_template('%(path)s/var/filestorage/Data.fs' % env, 'filestorage/Data.fs', use_sudo=True)
+        sudo('chown -R %(prod_user)s:%(prod_user)s filestorage/Data.fs' % env)
+
+        ### Upload Blobs ###
+        # backup current Blobs
+        if exists('blobstorage'):
+            sudo('mv blobstorage blobstorage.bak')
+
+        # remove temporary Blobs previous uploads
+        if exists('/tmp/blobstorage'):
+            sudo('rm -rf /tmp/blobstorage')
+
+        # upload Blobs to server and move it to it's place
+        rsync_project('/tmp', local_dir='%(path)s/var/blobstorage' % env)
+        sudo('rm -rf blobstorage')
+        sudo('mv /tmp/blobstorage ./')
+        sudo('chown -R %(prod_user)s:%(prod_user)s blobstorage' % env)
+        sudo('chmod -R 700 blobstorage')
+
+
+def start_supervisord():
+    """Start `supervisord` which in turn starts Zope."""
+
+    with cd('/home/%(prod_user)s' % env):
+        sudo('bin/supervisord', user=env.prod_user)
+
+
+############################################
+## Utilities needed for later maintenance ##
+############################################
+
+def supervisorctl(*cmd):
+    """Runs a supervisorctl command"""
+
+    with cd('/home/%(prod_user)s' % env):
+        sudo('bin/supervisorctl ' + ' '.join(cmd), user=env.prod_user)
+
+
+def download_data():
+    """Download Zope's Data.fs from the server."""
+
+    confirm("This will destroy all current Zope data on your local machine. " \
+            "Are you sure you want to continue?")
+
+    with cd('/home/%(prod_user)s/var' % env):
+
+        ### Downlaod Data.fs ###
+        # backup current Data.fs
+        if os.path.exists('filestorage/Data.fs'):
+            local('mv %(path)s/var/filestorage/Data.fs %(path)s/var/filestorage/Data.fs.bak' % env)
+
+        # remove temporary Data.fs file from previous downloads
+        if exists('/tmp/Data.fs', use_sudo=True):
+            sudo('rm -rf /tmp/Data.fs')
+
+        # downlaod Data.fs from server
+        sudo('rsync -a filestorage/Data.fs /tmp/Data.fs')
+        get('/tmp/Data.fs', '%(path)s/var/filestorage/Data.fs' % env)
+
+        ### Download Blobs ###
+        # backup current Blobs
+        if os.path.exists('%(path)s/var/blobstorage' % env):
+            local('mv %(path)s/var/blobstorage %(path)s/var/blobstorage_bak' % env)
+
+        # remove temporary Blobs from previous downloads
+        if exists('/tmp/blobstorage', use_sudo=True):
+            sudo('rm -rf /tmp/blobstorage')
+
+        # download Blobs from server -> use maintenance user for transfer
+        sudo('rsync -a blobstorage /tmp/')
+        sudo('chown -R %(user)s /tmp/blobstorage' % env)
+        local('rsync -az %(user)s@%(server)s:/tmp/blobstorage %(path)s/var/' % env)
+
+
+def upload_sphinx():
+    """Uploads HTML files generated by Sphinx."""
+    with settings(host_string='%(hq)s:22' % env):
+        with settings(host=env.hq):  # additional needed for rsync_project
+
+            # backup existing docs
+            if exists('/var/www/sphinx/niteoweb.%(shortname)s' % env):
+                sudo('mv /var/www/sphinx/niteoweb.%(shortname)s /var/www/sphinx/niteoweb.%(shortname)s.bak' % env)
+
+            # upload new docs
+            rsync_project(
+                local_dir='%(path)s/docs/html/' % env,
+                remote_dir='/tmp/niteoweb.%(shortname)s' % env,
+            )
+
+            # move them into place
+            sudo('mv /tmp/niteoweb.%(shortname)s /var/www/sphinx/niteoweb.%(shortname)s' % env)

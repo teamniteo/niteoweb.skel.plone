@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="niteoweb.zulu">
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <include package=".browser" />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="niteoweb.zulu"
+        directory="profiles/default"
+        description='Extension profile for niteoweb.zulu.'
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+</configure>
