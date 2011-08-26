@@ -39,6 +39,7 @@ setup(name='niteoweb.zulu',
           'plone.app.testing',
           'plone.app.theming',
           'setuptools',
+          'z3c.jbot',
 
       ],
       extras_require={

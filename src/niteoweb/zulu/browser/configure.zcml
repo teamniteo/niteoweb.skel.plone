@@ -4,4 +4,14 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="niteoweb.zulu">
 
+    <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+    <include package="z3c.jbot" file="meta.zcml" />
+    <browser:jbot directory="overrides" layer="..interfaces.INiteowebZuluLayer" />
+
+    <!-- Publish static files -->
+    <browser:resourceDirectory
+      name="niteoweb.zulu"
+      directory="static"
+      />
+
 </configure>
