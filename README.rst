@@ -8,6 +8,8 @@ Create a skeleton for your new project
 .. code-block:: bash
 
     $ svn export http://svn.github.com/nzupan/niteoweb.skel.plone.git niteoweb.<shortname>
+    $ cd niteoweb.<shortname>
+    $ mv src/niteoweb/zulu src/niteoweb/<shortname>
 
 
 Commit skeleton to repository
@@ -17,7 +19,6 @@ Commit skeleton to repository
 
     $ svn mkdir https://niteoweb.repositoryhosting.com/svn/niteoweb_<shortname>/niteoweb.<shortname> -m "create package dir"
     $ svn mkdir https://niteoweb.repositoryhosting.com/svn/niteoweb_<shortname>/niteoweb.<shortname>/{trunk,tags,branches} -m "create svn structure"
-    $ cd niteoweb.<shortname>
     $ svn co https://niteoweb.repositoryhosting.com/svn/niteoweb_<shortname>/niteoweb.<shortname>/trunk ./
     $ ln -s development.cfg buildout.cfg
     $ svn add *
