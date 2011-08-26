@@ -1,3 +1,33 @@
+===============
+HOW TO USE THIS
+===============
+
+Create a skeleton for your new project
+======================================
+
+.. code-block:: bash
+
+    $ svn export http://svn.github.com/nzupan/niteoweb.skel.plone.git niteoweb.<shortname>
+
+
+Commit skeleton to repository
+=============================
+
+.. code-block:: bash
+
+    $ cd niteoweb.<shortname>
+    $ svn mkdir https://niteoweb.repositoryhosting.com/svn/niteoweb_<shortname>/niteoweb.<shortname> -m "creating package dir"
+    $ svn add .
+    $ svn ci -m "initial skeleton commit"
+
+Customize
+=========
+
+ * Use search&replace to replace all placeholder strings with meaningful ones:
+   Zulu, zulu, TODO.
+ * Remove this entire paragraph from README.
+
+
 ============
 Zulu project
 ============
