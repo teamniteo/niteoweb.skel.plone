@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Base module for unittesting"""
+"""Base module for unittesting."""
 
 import unittest2 as unittest
 
