@@ -29,7 +29,7 @@ Customize
 
  * Use search&replace to replace all placeholder strings with meaningful ones:
    Zulu, zulu, TODO.
- * Remove this entire paragraph ("How to use this") from README.
+ * Remove this entire paragraph ("How to use this") from README.rst.
  * Start coding :).
 
 
@@ -45,29 +45,6 @@ Initialize buildout and start Zope
 
 
 
-
-============
-Zulu project
-============
-
-:Project title: Zulu
-:Project id: niteoweb.zulu
-:Latest version: |release|
-:Author: NiteoWeb Ltd.
-:URL: http://zulu.com
-:Source: http://sphinx.niteoweb.com/niteoweb.zulu
-:Source: http://niteoweb.repositoryhosting.com/svn/niteoweb_zulu
-:Framework: Plone 4.1
-:Server: Omega
-
-Quick Start
-===========
-
-.. sourcecode:: bash
-
-  $ cd ~/work
-  $ svn co https://niteoweb.repositoryhosting.com/svn/niteoweb_zulu/niteoweb.zulu/trunk niteoweb.zulu
-  $ cd niteoweb.zulu/
-  $ virtualenv -p python2.6 --no-site-packages ./
-  $ bin/python bootstrap.py
-  $ bin/buildout
+#################### REMOVE ALL BUT THIS LINE ####################
+See `docs/README.rst <https://sphinx.niteoweb.com/niteoweb.zulu>`_
+##################################################################
