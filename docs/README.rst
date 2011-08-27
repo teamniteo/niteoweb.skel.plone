@@ -7,8 +7,8 @@ Zulu project
 :Latest version: |release|
 :Author: NiteoWeb Ltd.
 :URL: http://zulu.com
-:Source: http://sphinx.niteoweb.com/niteoweb.zulu
-:Source: http://niteoweb.repositoryhosting.com/svn/niteoweb_zulu
+:Docs: https://sphinx.niteoweb.com/niteoweb.zulu
+:Source: https://niteoweb.repositoryhosting.com/svn/niteoweb_zulu
 :Framework: Plone 4.1
 :Server: Omega
 

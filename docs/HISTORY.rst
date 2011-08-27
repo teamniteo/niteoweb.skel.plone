@@ -1,3 +1,4 @@
+=========
 Changelog
 =========
     
@@ -5,5 +6,5 @@ Changelog
 0.1 (unreleased)
 ----------------
 
-    - Initial release.
-    [zupo]
+- Initial release.
+  [zupo]
