@@ -1,0 +1,4 @@
+# use it like this: svn propset svn:ignore -F docs/svnignore ./docs
+make.bat
+html
+doctrees
