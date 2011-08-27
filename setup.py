@@ -7,7 +7,7 @@ from setuptools import find_packages
 import os
 
 
-# shamlessly stolen from Hexagon IT guys :)
+# shamlessly stolen from Hexagon IT guys
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
@@ -41,7 +41,6 @@ setup(name='niteoweb.zulu',
           'plone.app.theming',
           'setuptools',
           'z3c.jbot',
-
       ],
       extras_require={
           # list libs needed for unittesting this project
