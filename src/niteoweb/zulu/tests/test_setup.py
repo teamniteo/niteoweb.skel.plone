@@ -28,7 +28,7 @@ class TestCase(IntegrationTestCase):
     def test_portal_title(self):
         """Test if portal title was correctly updated."""
         title = self.portal.getProperty('title')
-        self.assertTrue(title.startswith("Zavod mladi podjetnik -"))
+        self.assertEquals("Zulu Site", title)
 
     # browserlayer.xml
     def test_browserlayer(self):
