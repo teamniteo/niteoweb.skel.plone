@@ -1,0 +1,6 @@
+<layers>
+  <layer
+      name="niteoweb.zulu"
+      interface="niteoweb.zulu.interfaces.INiteowebZuluLayer"
+      />
+</layers>
