@@ -36,6 +36,7 @@ setup(name='niteoweb.zulu',
       install_requires=[
           # list project dependencies
           'niteoweb.loginas',
+          'niteoweb.fabfile',
           'plone.app.caching',
           'plone.app.testing',
           'plone.app.theming',
