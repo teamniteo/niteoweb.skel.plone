@@ -13,7 +13,7 @@ class TestCase(IntegrationTestCase):
     def setUp(self):
         """Custom shared utility setup for tests."""
         self.portal = self.layer['portal']
-        self.quickinstaller = getToolByName(self.portal, 'portal_quickinstaller')
+        self.installer = getToolByName(self.portal, 'portal_quickinstaller')
 
     def test_product_installed(self):
         """Test if niteoweb.zulu is installed with portal_quickinstaller."""
