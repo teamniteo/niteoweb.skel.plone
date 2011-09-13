@@ -6,10 +6,13 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="niteoweb.zulu">
 
+    <!-- Zope2 initialization -->
     <five:registerPackage package="." initialize=".initialize" />
 
+    <!-- Include sub-packages that use their own configure.zcml files. -->
     <include package=".browser" />
 
+    <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
         name="default"
         title="niteoweb.zulu"
