@@ -15,7 +15,7 @@ version = read('src', 'niteoweb', 'zulu', 'version.txt').strip()
 
 setup(name='niteoweb.zulu',
       version=version,
-      description="A portal for young entrepreneurs in Slovenia.",
+      description="Enter description of what this project is all about.",
       long_description=read('docs', 'README.rst') +
                        read('docs', 'HISTORY.rst') +
                        read('docs', 'LICENSE.rst'),
