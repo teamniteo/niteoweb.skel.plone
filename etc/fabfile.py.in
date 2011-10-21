@@ -53,8 +53,8 @@ import os
 env.path = os.getcwd()
 env.hosts = ['${ips:server}']
 env.prod_user = '${config:shortname}'  # production user for this project
-env.server = '${ips:server}'
-env.hq = '${ips:hq}'
+env.server_ip = '${ips:server}'
+env.hq_ip = '${ips:hq}'
 env.shortname = '${config:shortname}'
 
 
