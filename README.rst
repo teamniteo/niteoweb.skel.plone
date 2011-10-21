@@ -5,7 +5,7 @@ HOW TO USE THIS
 Create a skeleton for your new project
 ======================================
 
-.. code-block:: bash
+::
 
     $ svn export http://svn.github.com/nzupan/niteoweb.skel.plone.git niteoweb.<shortname>
     $ cd niteoweb.<shortname>
@@ -16,7 +16,7 @@ Create a skeleton for your new project
 Commit skeleton to repository
 =============================
 
-.. code-block:: bash
+::
 
     $ svn mkdir https://niteoweb.repositoryhosting.com/svn/niteoweb_<shortname>/niteoweb.<shortname> -m "create package dir"
     $ svn mkdir https://niteoweb.repositoryhosting.com/svn/niteoweb_<shortname>/niteoweb.<shortname>/{trunk,tags,branches} -m "create svn structure"
@@ -37,7 +37,7 @@ Customize
 Initialize buildout and start Zope
 ==================================
 
-.. code-block:: bash
+::
 
     $ virtualenv -p python2.6 --no-site-packages ./
     $ bin/python bootstrap.py
@@ -47,5 +47,5 @@ Initialize buildout and start Zope
 
 
 #################### REMOVE ALL BUT THIS LINE ####################
+
 See `docs/README.rst <https://sphinx.niteoweb.com/niteoweb.zulu>`_
-##################################################################
