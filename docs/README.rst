@@ -4,7 +4,6 @@ Zulu project
 
 :Project title: Zulu
 :Project id: niteoweb.zulu
-:Latest version: |release|
 :Author: NiteoWeb Ltd.
 :URL: http://zulu.com
 :Docs: https://sphinx.niteoweb.com/niteoweb.zulu
@@ -12,14 +11,8 @@ Zulu project
 :Framework: Plone 4.1
 :Server: Omega
 
-Quick Start
-===========
+.. topic:: Summary
 
-.. sourcecode:: bash
+    One or two sentences about the project.
 
-  $ cd ~/work
-  $ svn co https://niteoweb.repositoryhosting.com/svn/niteoweb_zulu/niteoweb.zulu/trunk niteoweb.zulu
-  $ cd niteoweb.zulu/
-  $ virtualenv -p python2.6 --no-site-packages ./
-  $ bin/python bootstrap.py
-  $ bin/buildout
+Additional more info about the projects' background, rationale, etc.

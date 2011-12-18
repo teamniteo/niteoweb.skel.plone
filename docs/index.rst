@@ -1,17 +1,16 @@
-
-.. include:: ../README.rst
+.. include:: README.rst
 
 Table of Contents
 =================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    glossary.rst
    api.rst
 
-.. include:: ../HISTORY.rst
-.. include:: ../LICENSE.rst
+.. include:: HISTORY.rst
+.. include:: LICENSE.rst
 
 Indices and tables
 ==================
@@ -19,4 +18,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

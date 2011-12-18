@@ -8,9 +8,6 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import pkg_resources
-from datetime import datetime
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -20,8 +17,7 @@ from datetime import datetime
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest',
-              'sphinx.ext.intersphinx', 'sphinx.ext.todo']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -36,13 +32,14 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
+from datetime import datetime
 project = u'niteoweb.zulu'
 copyright = u'%s, NiteoWeb Ltd.' % datetime.now().year
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
-
+import pkg_resources
 version = pkg_resources.get_distribution(project).version.replace('dev', '')
 release = version
 
@@ -192,7 +189,3 @@ latex_documents = [
 
 # If false, no module index is generated.
 #latex_use_modindex = True
-
-
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Installer for this package."""
 
-from setuptools import setup
 from setuptools import find_packages
+from setuptools import setup
 
 import os
 
@@ -19,6 +19,7 @@ setup(name='niteoweb.zulu',
       long_description=read('docs', 'README.rst') +
                        read('docs', 'HISTORY.rst') +
                        read('docs', 'LICENSE.rst'),
+      # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
@@ -38,7 +39,6 @@ setup(name='niteoweb.zulu',
           'niteoweb.loginas',
           'niteoweb.fabfile',
           'plone.app.caching',
-          'plone.app.testing',
           'plone.app.theming',
           'setuptools',
           'z3c.jbot',
@@ -48,7 +48,6 @@ setup(name='niteoweb.zulu',
           'test': [
               'mock',
               'plone.app.testing',
-              'transmogrify.filesystem',
               'unittest2',
           ]
       },
