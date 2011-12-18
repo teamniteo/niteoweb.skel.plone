@@ -46,6 +46,6 @@ Initialize buildout and start Zope
 
 
 
-#################### REMOVE ALL BUT THIS LINE ####################
+#################### REMOVE ALL BUT THE FOLLOWING LINE ####################
 
-See `docs/README.rst <https://sphinx.niteoweb.com/niteoweb.zulu>`_
+See `docs/README.rst <https://sphinx.niteoweb.com/niteoweb.zulu>`_.
