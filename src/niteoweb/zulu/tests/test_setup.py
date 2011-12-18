@@ -7,7 +7,7 @@ from Products.CMFCore.utils import getToolByName
 import unittest2 as unittest
 
 
-class TestCase(IntegrationTestCase):
+class TestSetup(IntegrationTestCase):
     """Test installation of niteoweb.zulu into Plone."""
 
     def setUp(self):
