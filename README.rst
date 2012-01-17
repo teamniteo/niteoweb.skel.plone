@@ -7,7 +7,7 @@ Create a skeleton for your new project
 
 ::
 
-    $ svn export http://svn.github.com/nzupan/niteoweb.skel.plone.git niteoweb.<shortname>
+    $ svn export http://svn.github.com/niteoweb/niteoweb.skel.plone.git niteoweb.<shortname>
     $ cd niteoweb.<shortname>
     $ mv src/niteoweb/zulu src/niteoweb/<shortname>
     $ mkdir docs/sphinx/_static
