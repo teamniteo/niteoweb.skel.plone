@@ -31,7 +31,7 @@ class NiteowebZuluLayer(PloneSandboxLayer):
         # Install into Plone site using portal_setup
         applyProfile(portal, 'niteoweb.zulu:default')
 
-        # Create test contemt
+        # Login and create some test
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
         portal.invokeFactory('Folder', 'folder')
