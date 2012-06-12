@@ -29,6 +29,8 @@ Customize
 
  * Use search&replace to replace all placeholder strings with meaningful ones:
    Zulu, zulu, TODO.
+ * delete src/niteoweb/zulu/browser/overrides/REMOVEME
+ * delete src/niteoweb/zulu/browser/static/REMOVEME
  * Remove this entire paragraph ("How to use this") from README.rst.
  * Start coding :).
 
