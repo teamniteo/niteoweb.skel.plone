@@ -60,7 +60,7 @@ setup(name='niteoweb.zulu',
               'Products.PrintingMailHost',
               'zptlint',
               'pep8',
-              'pyflakes',
+              'setuptools-flakes',  # this install "python setup.py flakes" command
               'zest.releaser',
               'jarn.mkrelease',
           ],
