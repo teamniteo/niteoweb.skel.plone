@@ -48,4 +48,23 @@ Initialize buildout and start Zope
 
 #################### REMOVE ALL BUT THE FOLLOWING LINE ####################
 
-See `docs/README.rst <https://sphinx.niteoweb.com/niteoweb.zulu>`_.
+=============
+niteoweb.zulu
+=============
+
+A Plone add-on that .....
+
+* `Source code @ GitHub <https://github.com/niteoweb/niteoweb.zulu>`_
+* `Releases @ PyPI <http://pypi.python.org/pypi/niteoweb.zulu>`_
+* `Documentation @ ReadTheDocs <http://readthedocs.org/docs/niteowebzulu>`_
+* `Continuous Integration @ Travis-CI <http://travis-ci.org/niteoweb/niteoweb.zulu>`_
+
+
+TODO
+====
+
+.. topic:: Summary
+
+    One or two sentences about the project.
+
+Additional more info about the projects' background, rationale, etc.

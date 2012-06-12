@@ -16,7 +16,7 @@ version = read('src', 'niteoweb', 'zulu', 'version.txt').strip()
 setup(name='niteoweb.zulu',
       version=version,
       description="Enter description of what this project is all about.",
-      long_description=read('docs', 'README.rst') +
+      long_description=read('README.rst') +
                        read('docs', 'HISTORY.rst') +
                        read('docs', 'LICENSE.rst'),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers

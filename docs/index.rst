@@ -1,13 +1,15 @@
-.. include:: README.rst
+.. include:: ../README.rst
 
-Table of Contents
-=================
+
+Developer documentation
+=======================
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   glossary.rst
-   api.rst
+    api.rst
+    glossary.rst
+
 
 .. include:: HISTORY.rst
 .. include:: LICENSE.rst
