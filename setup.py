@@ -21,9 +21,9 @@ setup(name='niteoweb.zulu',
                        read('docs', 'LICENSE.rst'),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+      ],
       keywords='Plone Python',
       author='NiteoWeb Ltd.',
       author_email='info@niteoweb.com',
@@ -35,26 +35,37 @@ setup(name='niteoweb.zulu',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          # list project dependencies
           'niteoweb.loginas',
           'niteoweb.fabfile',
           'plone.app.caching',
           'plone.app.theming',
           'setuptools',
           'z3c.jbot',
+          'Plone',
+          'Pillow',
       ],
       extras_require={
-          # list libs needed for unittesting this project
           'test': [
               'mock',
               'plone.app.testing',
               'unittest2',
-          ]
+          ],
+          'develop': [
+              'plone.reload',
+              'plone.app.debugtoolbar',
+              'Products.Clouseau',
+              'Products.DocFinderTab',
+              'Products.PDBDebugMode',
+              'Products.PrintingMailHost',
+              'zptlint',
+              'pep8',
+              'pyflakes',
+              'zest.releaser',
+              'jarn.mkrelease',
+          ],
       },
       entry_points="""
-      # -*- Entry points: -*-
-
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      )
+)
