@@ -43,6 +43,7 @@ setup(name='niteoweb.zulu',
           'z3c.jbot',
           'Plone',
           'Pillow',
+          'five.pt',
       ],
       extras_require={
           'test': [
