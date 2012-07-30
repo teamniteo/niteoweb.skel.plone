@@ -32,14 +32,15 @@ Customize
  * Start coding :).
 
 
-Initialize buildout and start Zope
-==================================
+Initialize buildout, run tests, start Zope
+==========================================
 
 ::
 
     $ virtualenv -p python2.7 --no-site-packages ./
     $ bin/python bootstrap.py
     $ bin/buildout
+    $ bin/test
     $ bin/instance fg
 
 
