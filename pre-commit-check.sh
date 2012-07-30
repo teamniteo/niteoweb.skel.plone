@@ -1,15 +1,29 @@
 #!/bin/bash
 
+function handle_exit {
+    if [ $? -ne 0 ]; then
+        EXITCODE=1
+    fi
+}
+
+EXITCODE=0
+
 echo 'Running tests'
-bin/test -s niteoweb.zulu
+bin/test; handle_exit
 
 echo '====== Running ZPTLint ======'
 for pt in `find src/niteoweb/zulu/ -name "*.pt"` ; do bin/zptlint $pt; done
+for xml in `find src/niteoweb/zulu/ -name "*.xml"` ; do bin/zptlint $xml; done
+for zcml in `find src/niteoweb/zulu/ -name "*.zcml"` ; do bin/zptlint $zcml; done
 
 echo '====== Running PyFlakes ======'
-bin/zopepy setup.py flakes
+bin/zopepy setup.py flakes; handle_exit
 
 echo '====== Running pep8 =========='
-bin/pep8 --ignore=E501 src/niteoweb/zulu
-bin/pep8 --ignore=E501 setup.py
-bin/pep8 --ignore=E501 fabfile.py
+bin/pep8 --ignore=E501 --count src/niteoweb/zulu; handle_exit
+bin/pep8 --ignore=E501 --count setup.py; handle_exit
+bin/pep8 --ignore=E501 --count fabfile.py; handle_exit
+
+if [ $EXITCODE -ne 0 ]; then
+    exit 1
+fi
