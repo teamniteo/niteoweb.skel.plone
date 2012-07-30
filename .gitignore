@@ -1,0 +1,14 @@
+var
+eggs
+parts
+lib
+include
+bin
+local
+.mr.developer.cfg
+.installed.cfg
+.DS_Store
+develop-eggs
+docs/doctrees
+docs/html
+docs/make.bat
