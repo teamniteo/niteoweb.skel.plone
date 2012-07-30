@@ -37,7 +37,7 @@ Initialize buildout and start Zope
 
 ::
 
-    $ virtualenv -p python2.6 --no-site-packages ./
+    $ virtualenv -p python2.7 --no-site-packages ./
     $ bin/python bootstrap.py
     $ bin/buildout
     $ bin/instance fg
