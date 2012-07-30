@@ -50,19 +50,18 @@ Initialize buildout, run tests, start Zope
 niteoweb.zulu
 =============
 
-A Plone add-on that .....
+:Framework: `Plone 4.2 <http://plone.org>`_
+:Bug tracker: https://github.com/niteoweb/niteoweb.zulu/issues
+:Source: https://github.com/niteoweb/niteoweb.zulu
+:Documentation: http://niteowebzulu.readthedocs.org/
+:Code status:
 
-* `Source code @ GitHub <https://github.com/niteoweb/niteoweb.zulu>`_
-* `Releases @ PyPI <http://pypi.python.org/pypi/niteoweb.zulu>`_
-* `Documentation @ ReadTheDocs <http://readthedocs.org/docs/niteowebzulu>`_
-* `Continuous Integration @ Travis-CI <http://travis-ci.org/niteoweb/niteoweb.zulu>`_
-
-
-TODO
-====
+    .. image:: http://travis-ci.org/niteoweb/niteoweb.zulu.png
+       :align: left
+       :target: http://travis-ci.org/niteoweb/niteoweb.zulu
 
 .. topic:: Summary
 
-    One or two sentences about the project.
+    One or two sentences about the project ...
 
-Additional more info about the projects' background, rationale, etc.
+Additional info about the projects' background, rationale, etc.
