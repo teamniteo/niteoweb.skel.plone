@@ -1,4 +1,7 @@
 #!/bin/bash
+# to install: $ ln -s ../../pre-commit-check.sh .git/hooks/pre-commit
+# TODO: check for exit code of each command
+# TODO: stash changes before doing tests: http://codeinthehole.com/writing/tips-for-using-a-git-pre-commit-hook/
 
 function handle_exit {
     if [ $? -ne 0 ]; then
