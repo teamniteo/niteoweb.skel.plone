@@ -1,5 +1,5 @@
-License
-=======
+License (3-clause BSD)
+======================
 
 Copyright (c) 2011, NiteoWeb Ltd.
 All rights reserved.
